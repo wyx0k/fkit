@@ -46,6 +46,7 @@ func (fc *FkitContext[T]) changePhase(phase AppPhase) {
 		}
 	}
 }
+
 func (fc *FkitContext[T]) AppName() string {
 	return fc.app.name
 }
@@ -60,6 +61,7 @@ func (fc *FkitContext[T]) Exit(msg string) {
 func (fc *FkitContext[T]) Ctx() context.Context {
 	return fc.ctx
 }
+
 func (fc *FkitContext[T]) Conf() *T {
 	return fc.conf
 }
@@ -71,9 +73,15 @@ func (fc *FkitContext[T]) SetAppLog(logger Logger) {
 func (fc *FkitContext[T]) Set(name string, value any) {
 	fc.values[name] = value
 }
+
 func (fc *FkitContext[T]) Get(name string) any {
 	return fc.values[name]
 }
+
+func (fc *FkitContext[T]) Logger() Logger {
+	return fc.appLog
+}
+
 func (fc *FkitContext[T]) SafeGo(fn func(), name ...string) {
 	go func() {
 		defer func() {

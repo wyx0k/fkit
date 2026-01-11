@@ -17,12 +17,13 @@ var format = log.MustStringFormatter(
 )
 
 type LogConf struct {
-	Path       string `json:"path"`
-	MaxSize    int    `json:"maxSize"`
-	MaxAge     int    `json:"maxAge"`
-	MaxBackups int    `json:"maxBackups"`
-	Compress   bool   `json:"compress"`
+	Path       string `json:"path" yaml:"path"`
+	MaxSize    int    `json:"max_size" yaml:"max_size"`
+	MaxAge     int    `json:"max_age" yaml:"max_age"`
+	MaxBackups int    `json:"max_backups" yaml:"max_backups"`
+	Compress   bool   `json:"compress" yaml:"compress"`
 }
+
 type LogConfHolder interface {
 	LogConf() LogConf
 }

@@ -2,7 +2,7 @@ package log
 
 import app "github.com/wyx0k/fkit"
 
-var _logger app.Logger
+var _logger app.Logger = &app.StdLogger{}
 
 func Debug(args ...any) {
 	_logger.Debug(args...)
